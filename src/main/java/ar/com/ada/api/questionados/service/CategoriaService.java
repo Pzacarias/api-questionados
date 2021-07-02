@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.questionados.entities.Categoria;
+import ar.com.ada.api.questionados.models.request.InfoNuevaCategoria;
 import ar.com.ada.api.questionados.repos.CategoriaRepository;
 
 @Service
@@ -23,7 +24,7 @@ public class CategoriaService {
             return false;
 
         repo.save(categoria);
-        
+
         return true;
     }
 
@@ -34,6 +35,20 @@ public class CategoriaService {
     public boolean existe(Integer id) {
         Categoria categoria = buscarPorId(id);
         return categoria != null;
+    }
+
+    public void modificarCategoria(Integer id, InfoNuevaCategoria infoNuevaCategoria) {
+        Categoria categoriaMod = this.buscarPorId(id);
+        categoriaMod.setNombre(infoNuevaCategoria.nombreNuevo);
+        categoriaMod.setDescripcion(infoNuevaCategoria.nombreNuevo);
+        repo.save(categoriaMod);
+
+    }
+
+    public void eliminarCategoriaPorId(Integer id) {
+        Categoria categoria = this.buscarPorId(id);
+        repo.delete(categoria);
+
     }
 
 }
