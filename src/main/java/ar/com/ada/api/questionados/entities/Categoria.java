@@ -13,8 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.data.annotation.Id;
 
-import javassist.expr.NewArray;
-
 @Entity
 @Table(name = "categoria")
 public class Categoria {
@@ -31,7 +29,7 @@ public class Categoria {
     @JsonIgnore
     private List<Pregunta> preguntas = new ArrayList<>();
 
-    
+
     public String getNombre() {
         return nombre;
     }
