@@ -8,6 +8,9 @@ import ar.com.ada.api.questionados.entities.Categoria;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
 
-    Categoria findByCategoriaId(Integer id);
-    
+    Categoria findByNombre(String nombre);
+    boolean existsByNombre(String nombre);
+    Categoria findById(int id);
+    void deleteById(int categoriaId);
+
 }
