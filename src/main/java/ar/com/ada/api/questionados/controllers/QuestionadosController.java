@@ -1,15 +1,11 @@
 package ar.com.ada.api.questionados.controllers;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.questionados.entities.Pregunta;
-import ar.com.ada.api.questionados.entities.Respuesta;
 import ar.com.ada.api.questionados.models.request.RespuestaAVerificar;
-import ar.com.ada.api.questionados.models.response.OpcionPregunta;
 import ar.com.ada.api.questionados.models.response.PreguntaAResolver;
 import ar.com.ada.api.questionados.models.response.RespuestaVerificada;
 import ar.com.ada.api.questionados.services.*;
