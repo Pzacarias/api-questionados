@@ -22,18 +22,21 @@ public class PreguntaController {
     @Autowired
     private PreguntaService service;
 
+    //GET /preguntas -> trae las preguntas
     @GetMapping("/preguntas")
     public ResponseEntity<List<Pregunta>> traerPreguntas() {
 
         return ResponseEntity.ok(service.traerPreguntas());
     }
 
+    //GET /preguntas/{id} -> trae una pregunta con sus respuestas
     @GetMapping("/preguntas/{id}")
     public ResponseEntity <Pregunta> buscarPreguntaPorId(@PathVariable Integer id){
 
         return ResponseEntity.ok(service.buscarPreguntaPorId(id));
     }
 
+    // POST /categorias -> crea una pregunta
     @PostMapping ("/preguntas")
     public ResponseEntity<?> crearPregunta(@RequestBody InfoPreguntaNueva preguntaNueva){
 
@@ -45,6 +48,18 @@ public class PreguntaController {
 
         return ResponseEntity.ok(preguntaNueva);
 
+    }
+    
+    // DELETE /preguntas/{id} -> elimina categoria
+    @DeleteMapping("/preguntas/{id}")
+    public ResponseEntity<GenericResponse> eliminarCategoria(@PathVariable Integer id) {
+        service.eliminarPreguntaPorId(id);
+
+        GenericResponse respuesta = new GenericResponse();
+        respuesta.isOk = true;
+        respuesta.message = "La categoria fue eliminada correctamente.";
+
+        return ResponseEntity.ok(respuesta);
     }
  }
     
