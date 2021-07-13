@@ -17,7 +17,7 @@ public class Respuesta {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "respuesta_id")
     private Integer respuestaId;
 
     private String texto;
@@ -26,8 +26,8 @@ public class Respuesta {
     private boolean esCorrecta;
 
     @ManyToOne
-    @JoinColumn (name="pregunta_id",referencedColumnName = "pregunta_id")
     @JsonIgnore
+    @JoinColumn (name="pregunta_id",referencedColumnName = "pregunta_id")
     private Pregunta pregunta;
 
     public Integer getRespuestaId() {
@@ -60,7 +60,7 @@ public class Respuesta {
 
     public void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
-        this.pregunta.agregarRespuesta(this);//relacion bidireccional
+        this.pregunta.agregarRespuesta(this); //relacion bidireccional
     }
 
     

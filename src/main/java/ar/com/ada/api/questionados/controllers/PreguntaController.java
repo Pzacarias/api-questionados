@@ -36,7 +36,7 @@ public class PreguntaController {
         return ResponseEntity.ok(service.buscarPreguntaPorId(id));
     }
 
-    // POST /categorias -> crea una pregunta
+    // POST /pregunta -> crea una pregunta
     @PostMapping ("/preguntas")
     public ResponseEntity<?> crearPregunta(@RequestBody InfoPreguntaNueva preguntaNueva){
 

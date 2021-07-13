@@ -1,5 +1,6 @@
 package ar.com.ada.api.questionados.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,7 +32,7 @@ public class Pregunta {
     private Categoria categoria;
 
     @OneToMany (mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Respuesta> opciones;
+    private List<Respuesta> opciones = new ArrayList<>();
 
     public void agregarRespuesta(Respuesta respuesta){
         this.opciones.add(respuesta);
