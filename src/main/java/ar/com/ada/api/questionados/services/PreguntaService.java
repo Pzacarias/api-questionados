@@ -47,8 +47,9 @@ public class PreguntaService {
         pregunta.setCategoria(categoria);
       
         for (Respuesta respuesta: opciones) {
-            respuesta.setPregunta(pregunta);
+           pregunta.agregarRespuesta(respuesta);
         }
+        
         
         repo.save(pregunta);
         return pregunta;

@@ -40,6 +40,7 @@ public class Pregunta {
 
     public void agregarRespuesta(Respuesta respuesta){
         this.opciones.add(respuesta);
+        respuesta.setPregunta(this);
     }
 
 
@@ -65,7 +66,7 @@ public class Pregunta {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
-        this.categoria.agregarPregunta(this);
+       // this.categoria.agregarPregunta(this);
     }
 
     public List<Respuesta> getOpciones() {

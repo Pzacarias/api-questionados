@@ -60,7 +60,7 @@ public class Respuesta {
 
     public void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
-        this.pregunta.agregarRespuesta(this); //relacion bidireccional
+        //this.pregunta.agregarRespuesta(this); //relacion bidireccional
     }
 
     
