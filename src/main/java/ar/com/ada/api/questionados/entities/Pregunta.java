@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table (name= "pregunta")
@@ -31,12 +33,15 @@ public class Pregunta {
     @JoinColumn (name = "categoria_id", referencedColumnName = "categoria_id")
     private Categoria categoria;
 
-    @OneToMany (mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "pregunta",  cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.TRUE)
     private List<Respuesta> opciones = new ArrayList<>();
 
     public void agregarRespuesta(Respuesta respuesta){
         this.opciones.add(respuesta);
     }
+
+  
 
     public Integer getPreguntaId() {
         return preguntaId;
@@ -68,7 +73,7 @@ public class Pregunta {
     }
 
     public void setOpciones(List<Respuesta> opciones) {
-        this.opciones = opciones;
+        this.opciones = getOpciones();
     }
     
 }
