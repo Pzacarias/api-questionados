@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,15 +34,14 @@ public class Pregunta {
     @JoinColumn (name = "categoria_id", referencedColumnName = "categoria_id")
     private Categoria categoria;
 
-    @OneToMany (mappedBy = "pregunta",  cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.TRUE)
+    @OneToMany (mappedBy = "pregunta",  cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
+   // @LazyCollection(LazyCollectionOption.TRUE)
     private List<Respuesta> opciones = new ArrayList<>();
 
     public void agregarRespuesta(Respuesta respuesta){
         this.opciones.add(respuesta);
     }
 
-  
 
     public Integer getPreguntaId() {
         return preguntaId;
@@ -73,7 +73,7 @@ public class Pregunta {
     }
 
     public void setOpciones(List<Respuesta> opciones) {
-        this.opciones = getOpciones();
+        this.opciones = opciones;
     }
     
 }
